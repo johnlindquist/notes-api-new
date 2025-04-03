@@ -1,0 +1,22 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Vitest Setup Decisions
+
+- **Package Manager**: `pnpm` used per user request.
+- **Testing Framework**: `vitest` installed (`pnpm i -D vitest`).
+- **Vite Config (`vite.config.ts`)**:
+    - Added `test` config block.
+    - `globals: true` enabled for convenience (no `describe`, `it`, `expect` imports needed in tests).
+    - `environment: 'edge-runtime'` chosen after `'node'` failed; better suited for Cloudflare Workers context.
+    - `@cloudflare/vite-plugin` conditionally excluded during tests (`!process.env.VITEST`) to prevent Vite server errors.
+- **TS Config (`tsconfig.json`)**:
+    - Added `"vitest/globals"` to `types` for global type recognition.
+    - Installed `@types/node` (`pnpm i -D @types/node`) to support `process.env.VITEST` usage in `vite.config.ts`.
+- **Package Scripts (`package.json`)**:
+    - Added `"test": "vitest"` (watch mode).
+    - Added `"test:run": "vitest run"` (single run).
+- **Test File Location**: Placed in `src/tests/` as directed by initial setup instructions.
+- **Dependencies**: Installed `@edge-runtime/vm` (`pnpm i -D @edge-runtime/vm`) as required by Vitest for `edge-runtime` environment.
