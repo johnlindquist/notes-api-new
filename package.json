@@ -8,8 +8,8 @@
 		"test": "vitest",
 		"test:run": "vitest run",
 		"format": "biome format --write .",
-		"lint": "biome lint --apply-unsafe .",
-		"check": "biome check --apply-unsafe ."
+		"lint": "biome lint --write --unsafe .",
+		"check": "biome check --write --unsafe ."
 	},
 	"dependencies": {
 		"hono": "^4.7.5"
