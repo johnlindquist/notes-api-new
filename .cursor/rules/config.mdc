@@ -1,0 +1,71 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+
+# Project Configuration Summary
+
+This document summarizes the configuration files used in this project.
+
+## `@package.json`
+
+Defines project metadata, scripts, and dependencies.
+
+- **`name`**: `notes-api`
+- **`type`**: `module`
+- **Scripts**:
+    - `dev`: `vite`
+    - `preview`: `wrangler dev`
+    - `deploy`: `wrangler deploy`
+- **Dependencies**:
+    - `hono`
+- **Dev Dependencies**:
+    - `@cloudflare/vite-plugin`
+    - `@cloudflare/workers-types`
+    - `vite`
+    - `vite-plugin-ssr-hot-reload`
+    - `wrangler`
+
+## `@wrangler.jsonc`
+
+Configures the Cloudflare Worker deployment.
+
+- **`name`**: `notes-api`
+- **`compatibility_date`**: `2024-04-01`
+- **`main`**: `./src/index.tsx` (Entry point for the worker)
+- **`assets`**: `{ "directory": "./public" }` (Directory for static assets)
+- *Note: Contains commented-out sections for potential configurations like environment variables, KV, R2, D1, and AI.*
+
+## `@tsconfig.json`
+
+Configures the TypeScript compiler options.
+
+- **`target`**: `ESNext`
+- **`module`**: `ESNext`
+- **`moduleResolution`**: `Bundler`
+- **`strict`**: `true`
+- **`lib`**: `["ESNext"]`
+- **`types`**: `["@cloudflare/workers-types/2023-07-01", "vite/client"]`
+- **`jsx`**: `react-jsx`
+- **`jsxImportSource`**: `hono/jsx`
+
+## `@vite.config.ts`
+
+Configures the Vite development server and build tool.
+
+- **Plugins**:
+    - `ssrHotReload()`: Enables hot reloading for server-side rendering.
+    - `cloudflare()`: Integrates Vite with Cloudflare Workers.
+
+## `@.gitignore`
+
+Specifies intentionally untracked files for Git.
+
+- **Excluded**:
+    - Production build output (`dist/`)
+    - Dependencies (`node_modules/`, `.wrangler/`)
+    - Environment files (`.env`, `.dev.vars`)
+    - Logs (`logs/`, `*.log`, etc.)
+    - Development environment specific files (`.vscode/`, `.idea/`, `.yarn/`)
+    - OS-specific files (`.DS_Store`)
