@@ -12,6 +12,7 @@
     "hono": "^4.7.5"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@cloudflare/vite-plugin": "^0.1.15",
     "@cloudflare/workers-types": "^4.20250214.0",
     "@edge-runtime/vm": "^5.0.0",
