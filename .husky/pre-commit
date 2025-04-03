@@ -1,0 +1,18 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "Running pre-commit hook: Formatting and Testing..."
+
+# Ensure script exits immediately if any command fails
+set -e
+
+# Run the formatter
+echo "Running formatter (pnpm format)..."
+pnpm format
+
+# Run the tests (single run)
+echo "Running tests (pnpm test:run)..."
+pnpm test:run
+
+echo "Pre-commit checks passed!"
+exit 0 # Explicitly exit with success code

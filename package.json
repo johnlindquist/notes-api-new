@@ -9,7 +9,8 @@
 		"test:run": "vitest run",
 		"format": "biome format --write .",
 		"lint": "biome lint --write --unsafe .",
-		"check": "biome check --write --unsafe ."
+		"check": "biome check --write --unsafe .",
+		"prepare": "husky"
 	},
 	"dependencies": {
 		"hono": "^4.7.5"
@@ -20,6 +21,7 @@
 		"@cloudflare/workers-types": "^4.20250214.0",
 		"@edge-runtime/vm": "^5.0.0",
 		"@types/node": "^22.14.0",
+		"husky": "^9.1.7",
 		"vite": "^6.1.1",
 		"vite-plugin-ssr-hot-reload": "^0.4.1",
 		"vitest": "^3.1.1",

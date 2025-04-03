@@ -1,0 +1,52 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# notes-api Onboarding Reference
+
+## Core Tech
+
+*   **Language:** TypeScript
+*   **Framework:** Hono (on Cloudflare Workers)
+*   **Runtime:** Cloudflare Workers (`edge-runtime` for tests)
+*   **UI:** Hono JSX Renderer
+*   **Package Manager:** `pnpm`
+
+## Key Tools
+
+*   **Dev Server/Build:** Vite (`vite`)
+*   **Deployment:** Wrangler (`wrangler`)
+*   **Testing:** Vitest (`vitest`)
+*   **Formatting/Linting:** Biome (`@biomejs/biome`)
+
+## Commands (`pnpm run <script>`)
+
+*   `i`: Install dependencies
+*   `dev`: Start local dev server (Vite + Hono)
+*   `preview`: Simulate worker locally (Wrangler)
+*   `deploy`: Deploy to Cloudflare
+*   `test`: Run tests (watch mode)
+*   `test:run`: Run tests once
+*   `format`: Format code (Biome)
+*   `lint`: Lint code (Biome)
+*   `check`: Format + Lint code (Biome)
+
+## Project Structure
+
+*   `src/`: Source code
+    *   `index.tsx`: Main Hono app entry point
+    *   `renderer.tsx`: Base HTML template renderer
+    *   `tests/`: Unit/integration tests
+*   `public/`: Static assets (served by Wrangler)
+*   `dist/`: Build output (ignored by git)
+*   `.wrangler/`: Wrangler dev cache (ignored by git)
+
+## Configuration Files
+
+*   `package.json`: Project definition, dependencies, scripts
+*   `wrangler.jsonc`: Cloudflare Worker config (entry, assets, bindings)
+*   `tsconfig.json`: TypeScript compiler options
+*   `vite.config.ts`: Vite dev server/build/test config
+*   `biome.json`: Biome formatter/linter config
+*   `.gitignore`: Git ignored files
